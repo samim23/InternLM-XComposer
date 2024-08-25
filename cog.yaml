@@ -15,6 +15,7 @@ build:
     - "transformers==4.33.3"
     - "torch==2.0.1"
     - "pillow==10.0.1"
+    - "numpy==1.24.3"
     - "torchvision==0.15.2"
     - ipython
     - "timm==0.4.12"
@@ -23,4 +24,3 @@ build:
   run:
     - MAX_JOBS=8 pip install flash-attn --no-build-isolation
 predict: "predict.py:Predictor"
-
