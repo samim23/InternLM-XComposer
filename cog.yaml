@@ -9,6 +9,7 @@ build:
     - "libglib2.0-0"
     - "ninja-build"
   python_packages:
+    - "setuptools==69.5.1"
     - "xlsxwriter==3.1.2"
     - "sentencepiece==0.1.99"
     - "transformers==4.33.3"
@@ -18,7 +19,8 @@ build:
     - ipython
     - "timm==0.4.12"
     - "einops==0.6.1"
+    - "packaging==24.1.0"
   run:
-    - git clone https://github.com/Dao-AILab/flash-attention.git && cd flash-attention && python setup.py install && cd csrc/rotary && pip install -e .
+    - MAX_JOBS=8 pip install flash-attn --no-build-isolation
 predict: "predict.py:Predictor"
 
