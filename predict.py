@@ -24,14 +24,14 @@ class Predictor(BasePredictor):
 
     def predict(
         self,
-        image: Path = Input(description="Input image.", default=None),
+        media: Path = Input(description="Input image or video file (supports MP4).", default=None),
         text: str = Input(description="Input text."),
     ) -> str:
         """Run a single prediction on the model"""
-        query = f"<ImageHere>{text}" if image else text
-        image_path = str(image) if image else None
-        
+        query = f"<MediaHere>{text}" if media else text
+        media_path = str(media) if media else None
+
         with torch.cuda.amp.autocast():
-            response, _ = self.model.chat(self.tokenizer, query=query, image=image_path, history=[], do_sample=False)
+            response, _ = self.model.chat(self.tokenizer, query=query, image=media_path, history=[], do_sample=False)
         
         return response
