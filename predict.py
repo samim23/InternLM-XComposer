@@ -28,7 +28,7 @@ class Predictor(BasePredictor):
         text: str = Input(description="Input text."),
     ) -> str:
         """Run a single prediction on the model"""
-        query = f"<MediaHere>{text}" if media else text
+        query = f"<ImageHere>{text}" if media else text
         media_path = str(media) if media else None
 
         with torch.cuda.amp.autocast():
